@@ -90,7 +90,6 @@ app.getObject('QVChart11','jkpGX').then(function(reply){
   //callbacks -- inserted here --
 
   function KPIhc(reply, app) {
-    console.log(reply);
     $("#QVKPI1")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
     $("#QVKPI2")[0].innerText =
