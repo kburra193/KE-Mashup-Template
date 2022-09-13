@@ -1,0 +1,635 @@
+:root {
+  /* Theme 1 */
+  --maincontainer--theme1: #f7f7f7;
+  --sidebar-theme1: #192234;
+  --hamburger-theme1: #192234;
+  --filterpanelheader-theme1: #192234;
+  --topbar-theme1: #303f5d;
+  --topbartext-theme1: #edf0f5;
+  --sidebarcanvas--theme1: white;
+  --sidebaractivelinks-theme1: #303f5d;
+  --sidebaricons-theme1: #7090f0;
+  --sidebartext-theme1: #edf0f5;
+  --sidebartextunderline-theme1: #edf0f5;
+  --rightmenuicons-theme1: #7090f0;
+  --bookmarksitems-theme1: #7090f0;
+  --bookmarkstext-theme1: #edf0f5;
+  --filterselecteditems-theme1: #655dc6;
+  --buttons-theme1: #7090f0;
+  --notification-theme1: #dc423f;
+  --notificationtext-theme1: white;
+  --selectionstabtext-theme1: #edf0f5;
+  --qvobjectbg-theme1: white;
+  --scrollbarthumb-theme1: #888;
+  --scrollbarthumbhover-theme1: #555;
+  --scrollbartrack-theme1: #f1f1f1;
+  --headertext-theme1: #595959;
+  --qvtitlewrapper-theme1: #e7eaf0;
+  --qvtitlewrappertext-theme1: #655dc6;
+  /* Theme 2 */
+  --maincontainer--theme2: #303f5d;
+  --sidebar-theme2: #192234;
+  --hamburger-theme2: #edf0f5;
+  --filterpanelheader-theme2: #192234;
+  --topbar-theme2: #ffffff;
+  --topbartext-theme2: #2354e8;
+  --sidebarcanvas--theme2: #192234;
+  --sidebaractivelinks-theme2: none;
+  --sidebaricons-theme2: #edf0f5;
+  --sidebartext-theme2: #edf0f5;
+  --sidebartextunderline-theme2: #2354e8;
+  --rightmenuicons-theme2: #2354e8;
+  --bookmarksitems-theme2: #2354e8;
+  --bookmarkstext-theme2: #edf0f5;
+  --filterselecteditems-theme2: #655dc6;
+  --buttons-theme2: #2354e8;
+  --notification-theme2: #dc423f;
+  --notificationtext-theme2: white;
+  --selectionstabtext-theme2: #edf0f5;
+  --qvobjectbg-theme2: white;
+  --scrollbarthumb-theme2: #888;
+  --scrollbarthumbhover-theme2: #555;
+  --scrollbartrack-theme2: #f1f1f1;
+  --headertext-theme2: #ffffff;
+  --qvtitlewrapper-theme2: #e7eaf0;
+  --qvtitlewrappertext-theme2: #655dc6;
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Arial";
+}
+body {
+  height: 100%;
+  margin: 0px;
+  display: flex;
+}
+/* CSS FOR MAIN STRUCTURE */
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+#bs-canvas-right {
+  background-color: var(--sidebarcanvas--theme1);
+  width: 400px;
+  transform: translateX(100%);
+}
+#bs-canvas-right.active-filters {
+  transform: translateX(0);
+}
+.wrapper.active-filters {
+  margin-right: 400px;
+}
+#bs-canvas-right .sidebar-brand {
+  height: 60px;
+  background: var(--filterpanelheader-theme1);
+  margin-bottom: 10px;
+}
+/* CSS Top Bar */
+.top_navbar {
+  background: var(--topbar-theme1);
+  height: 60px;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+/* CSS Top Bar - Hamburger */
+.top_navbar .hamburger {
+  width: 80px;
+  background: var(--hamburger-theme1);
+  position: relative;
+  font-size: 28px;
+}
+.top_navbar .hamburger .hamburger__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 40px;
+  height: 20px;
+}
+.top_navbar .hamburger__inner > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--topbartext-theme1);
+}
+.top_navbar .hamburger div.two {
+  top: 10px;
+  width: 40px;
+}
+.top_navbar .hamburger div.three {
+  top: 20px;
+}
+.top_navbar .ham_close {
+  position: absolute;
+  background: var(--topbartext-theme1);
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+}
+.top_navbar .ham_close:hover {
+  opacity: 1;
+}
+.top_navbar .ham_close:before,
+.top_navbar .ham_close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.top_navbar .ham_close:before {
+  transform: rotate(45deg);
+}
+.top_navbar .ham_close:after {
+  transform: rotate(-45deg);
+}
+/* CSS Top Bar - Menu for logo , Bookmarks and Filters */
+.top_navbar .menu {
+  width: calc(100% - 80px);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.top_navbar .menu .logo {
+  color: var(--topbartext-theme1);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.top_navbar .menu .right_menu ul {
+  display: flex;
+}
+.top_navbar .menu .right_menu ul li {
+  position: relative;
+  padding: 0 15px;
+  color: var(--rightmenuicons-theme1);
+}
+.top_navbar .menu .right_menu ul li .fas {
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--icon-dark);
+}
+.top_navbar .menu .right_menu ul li .fas:hover,
+top_navbar .menu .right_menu ul li .fas:active {
+  font-size: 22px;
+  cursor: pointer;
+}
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+.margin-bottom-45 {
+  margin-bottom: 45px;
+}
+.main_container {
+  background-color: var(--maincontainer--theme1);
+}
+/* CSS Sidebar Navigation */
+.main_container .sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 100%;
+  width: 225px;
+  background: var(--sidebar-theme1);
+  transition: all 0.3s ease;
+}
+/* CSS Sidebar Inner */
+.main_container .sidebar .sidebar__inner {
+  position: relative;
+}
+.main_container .sidebar .profile {
+  display: flex;
+  align-items: center;
+  color: var(--sidebartext-theme1);
+  padding: 20px 0;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+.profile_info {
+  margin-left: 35%;
+}
+.main_container .sidebar .profile p:first-child {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark2);
+  margin-bottom: 3px;
+  letter-spacing: 1.5px;
+}
+.main_container .container {
+  margin-top: 60px;
+  width: calc(100% - 225px);
+  margin-left: 225px;
+  padding: 0px 30px;
+  transition: all 0.3s ease;
+}
+.main_container .sidebar ul li a {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 20px 30px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1px;
+  letter-spacing: 1.3px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  color: var(--notificationtext-theme1);
+}
+.main_container .sidebar ul li a .icon {
+  margin-right: 15px;
+  font-size: 28px;
+}
+.main_container .sidebar ul li a span {
+  display: inline-block;
+}
+.main_container .sidebar ul li a:hover,
+.main_container .sidebar ul li a.active {
+  background: var(--sidebaractivelinks-theme1);
+  color: var(--sidebartext-theme1);
+  text-decoration-line: underline;
+  text-decoration-color: var(--sidebartextunderline-theme1);
+  text-decoration-thickness: 0.4rem;
+}
+/* after adding active class */
+.wrapper.active .sidebar {
+  width: 80px;
+}
+.wrapper.active .sidebar ul li a span.title,
+.wrapper.active .profile_info {
+  display: none;
+}
+.wrapper.active .main_container .container {
+  width: calc(100% - 80px);
+  margin-left: 80px;
+}
+/* CSS FILTER PANE UTILIZING BOOTSTRAP : we are making few changes ***/
+.bs-canvas-overlay {
+  opacity: 0;
+  z-index: -1;
+}
+.bs-canvas-overlay.show {
+  opacity: 0.85;
+  z-index: 1100;
+}
+.bs-canvas {
+  top: 0;
+  width: 0;
+  z-index: 1110;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.bs-canvas-right {
+  right: 0;
+}
+.bs-canvas-anim {
+  transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+}
+.bg-change-green {
+  background-color: var(--sidebar-dark) !important;
+}
+.bootstrap-iso .text-light {
+  color: var(--text-dark2) !important;
+}
+/*** CSS for scrollbar in filter pane ***/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbartrack-theme1);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbarthumb-theme1);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbarthumbhover-theme1);
+}
+/*** End CSS for scrollbar in filter pane ***/
+.bootstrap-iso .py-5 {
+  padding-top: 1rem !important;
+}
+.bootstrap-iso p {
+  letter-spacing: 0.8px;
+}
+.bootstrap-iso .card-header {
+  letter-spacing: 1.3px !important;
+}
+.bootstrap-iso .card-title {
+  letter-spacing: 1.3px !important;
+}
+.bootstrap-iso label {
+  letter-spacing: 1.3px !important;
+}
+.bootstrap-iso .btn-primary {
+  letter-spacing: 1.3px;
+}
+.bootstrap-iso .nav-pills .nav-link {
+  border-radius: 0rem !important;
+}
+.bootstrap-iso .nav-pills .nav-link.active,
+.bootstrap-iso .nav-pills .show > .nav-link {
+  color: var(--sidebartext-theme1);
+  background-color: var(--buttons-theme1) !important;
+}
+.bootstrap-iso .card-body {
+  box-shadow: 5px 5px 5px 0px rgb(0 0 0 / 20%) !important;
+}
+/**CSS BOOKMARKS AND SELECTIONS NOTIFICATION ***/
+/* CSS Bookmark */
+.list-group {
+  padding-top: 20px;
+}
+.list-group-item {
+  display: flex;
+  align-items: center;
+}
+.list-group-item .bm-title-text {
+  cursor: pointer;
+  color: var(--bookmarksitems-theme1);
+  font-weight: bold;
+}
+.list-group-item .bm-title-desc {
+  cursor: pointer;
+  padding-left: 10px;
+  color: var(--bookmarksitems-theme1);
+}
+.list-group .list-group-item i {
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 10px;
+}
+.list-group-item .bm-title-desc {
+  cursor: pointer;
+  padding-left: 10px;
+}
+/* CSS Current Selections */
+#selections {
+  padding-right: 20px;
+}
+.notification {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px !important;
+  font-weight: 300;
+  padding: 2px 6px;
+  border-radius: 50% !important;
+  background: var(--notification-theme1);
+  color: var(--notificationtext-theme1);
+}
+#currSelections {
+  display: flex;
+  flex-direction: column;
+}
+.selected-field-container {
+  display: flex;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  line-height: 22px;
+  background: var(--selectionstabtext-theme1);
+  border: 1px solid rgb(210, 220, 221);
+  border-radius: 6px;
+  width: calc(100% - 27px);
+  margin: 4px 16px 6px;
+  padding: 9px;
+  cursor: pointer;
+  box-shadow: 0 6px 10px rgb(0 0 0 / 8%), 0 0 6px rgb(0 0 0 / 5%);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+}
+.selected-field-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+.selected-field-container .selected-field {
+  padding-right: 10px;
+  font-weight: bold;
+  color: var(--icon-dark) !important;
+}
+.selected-field-container .clear-field {
+  font-size: 18px;
+  margin-left: auto;
+  font-weight: bold;
+  color: var(--notification-theme1);
+  padding-right: 20px;
+  cursor: pointer;
+}
+.pqt-plus,
+.pqt-minus {
+  border: none;
+  font-size: 20px;
+  padding: 0 20px;
+  width: 50px;
+  border-radius: 10px;
+  height: 50px;
+  user-select: none;
+  line-height: 50px;
+  color: var(--buttons-theme1);
+}
+.pqt-plus:hover,
+.pqt-minus:hover {
+  cursor: pointer;
+}
+.clearAll-button {
+  position: relative;
+  padding: 10px;
+  border: 0;
+  border-radius: 10px;
+  background-color: var(--buttons-theme1);
+  outline: none;
+  cursor: pointer;
+  margin: 0 10px;
+  color: var(--selectionstabtext-theme1);
+  overflow: hidden;
+  user-select: none;
+}
+/* CSS FOR QLIK STYLES */
+/* CSS for Qlik Placeholders Objects */
+.qvplaceholder .Loader {
+  opacity: 0;
+}
+.qvplaceholder,
+.qvobject {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  cursor: pointer;
+  background-color: var(--qvobjectbg-theme1);
+}
+.qvplaceholder,
+.qvobject:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+/* Chart Cards */
+/* Chart Headers */
+.qv-object:not(.qv-object-filterpane) .qv-object-header {
+  background-color: #edf0f5;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 14px 16px 0px;
+}
+/*CSS for Filters Placeholders objects only*/
+.filterObject {
+  width: 100%;
+  margin: 0 auto;
+}
+.filterObject .qvplaceholder {
+  height: 2.2rem;
+  width: 100%;
+}
+.filterObject .qvobject {
+  height: 2.2rem;
+  width: 100%;
+}
+/*CSS for Extension Filter Placeholder object*/
+.filterObjectExt {
+  width: 100%;
+  margin: 0 auto;
+}
+.filterObjectExt .qvplaceholder {
+  height: 500px;
+  width: 100%;
+}
+.filterObjectExt .qvobject {
+  height: 500px;
+  width: 100%;
+}
+.qv-object .qv-inner-object {
+  height: 100%;
+}
+.qv-collapsed-listbox .title-wrapper {
+  background-color: var(--qvtitlewrapper-theme1) !important;
+}
+.qv-collapsed-listbox .title-wrapper .title {
+  color: var(--qvtitlewrappertext-theme1) !important;
+  letter-spacing: 0.8px !important;
+}
+/*for filters and other objects to display inside filter pane*/
+.qv-object.qv-object-filterpane {
+  display: flex !important;
+}
+.qv-object.qv-object-qlik-variable-input {
+  display: flex !important;
+}
+.qv-object.qv-object-qlik-date-picker {
+  display: flex !important;
+}
+.qvchart {
+  height: 500px;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.lui-popover-container {
+  position: fixed !important;
+  z-index: 10000 !important;
+}
+.qlik-daterangepicker.dropdown-menu {
+  z-index: 10000 !important;
+}
+.qlik-daterangepicker.dropdown-menu.opensleft.show-calendar {
+  z-index: 10000 !important;
+}
+.qv-object.qv-object-qlik-variable-input {
+  display: flex !important;
+  height: 100px !important;
+}
+.qv-listbox .serverSelected,
+.qv-listbox li.selected {
+  background-color: var(--filterselecteditems-theme1) !important;
+  border-bottom: 1px solid var(--filterselecteditems-theme1) !important;
+  color: #edf0f5;
+}
+.qv-state-count-bar .state.selected {
+  background: var(--filterselecteditems-theme1) !important;
+}
+.sel-toolbar-list li .sel-toolbar-confirm {
+  background-color: var(--filterselecteditems-theme1) !important;
+  border: 1px solid #0000;
+  box-shadow: inset 0 -1px 0 0 #00000026;
+  color: #edf0f5;
+}
+/* Media Queries */
+@media only screen and (min-width: 720px) {
+  main {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 24px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  /*#bs-canvas-right {
+    width:100% !important
+  }
+  */
+  #bookmark {
+    margin-left: auto;
+  }
+  .wrapper:not(.active) .sidebar {
+    width: 100vw !important;
+    z-index: 100;
+  }
+}
+/* CSS Loaders*/
+.Loader {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+  border: 0.2em solid transparent;
+  border-left-color: currentcolor;
+  border-right-color: currentcolor;
+  border-radius: 50%;
+  -webkit-animation: 1s Loader linear infinite;
+  animation: 1s Loader linear infinite;
+}
+@-webkit-keyframes Loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes Loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
