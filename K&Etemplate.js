@@ -53,18 +53,7 @@ require(["js/qlik"], function (qlik) {
       });
     $('[class="reloadTime"]').text(reloadTimeNew);
   });
-  window.qlik = qlik;
-  window.app = app;
 
-  /*
-    $('#SheetNav').click( function () {
-    var SheetID = '7316b7b9-7450-433c-92bb-8939de273ce2'
-  
-							qlik.navigation.gotoSheet(SheetID);
-							console.log(qlik.navigation.gotoSheet(SheetID))
-							});
-*/
-  /// var sheet1 = qlik.navigation.gotoSheet(sheetID);
 
   //get objects -- inserted here --
 
