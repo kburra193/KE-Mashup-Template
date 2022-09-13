@@ -25,23 +25,58 @@ require(["js/qlik"], function (qlik) {
     $("#popupText").append(error.message + "<br>");
     $("#popup").fadeIn(1000);
   });
+  
   $("#closePopup").click(function () {
     $("#popup").hide();
   });
-  //open apps -- inserted here --
+  
 
+							
+  //open apps -- inserted here --
+  var app = qlik.openApp("Nutra_Green_Sales_BAStart.qvf", config);
+  console.log(app);
   //Logic for Reload Time
   app.getAppLayout().then((e) => {
     console.log("reload time received");
     var reloadTime = e.layout.qLastReloadTime;
-    $('[class="reloadTime"]').text(reloadTime);
+	console.log(reloadTime);
+	var newDate = new Date(reloadTime); 
+	var reloadTimeNew = (newDate.getMonth()+1)+
+          "/"+newDate.getDate()+
+          "/"+newDate.getFullYear()+
+		  " "+newDate.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+	    $('[class="reloadTime"]').text(reloadTimeNew);
   });
   window.qlik = qlik;
   window.app = app;
-  //get objects -- inserted here --
-
-  /* Export Button logic for 2 tables. Pls change object IDs accordingly*/
+  
   /*
+    $('#SheetNav').click( function () {
+    var SheetID = '7316b7b9-7450-433c-92bb-8939de273ce2'
+  
+							qlik.navigation.gotoSheet(SheetID);
+							console.log(qlik.navigation.gotoSheet(SheetID))
+							});
+*/
+ /// var sheet1 = qlik.navigation.gotoSheet(sheetID);
+  
+  //get objects -- inserted here --
+	app.getObject('QV14','jkpGX');
+	app.getObject('QVChart11','jkpGX');
+	
+	app.getObject('QV05','DPbBaUJ');
+	app.getObject('QV04','UbLKVfv');
+	app.getObject('QV03','svseAV');
+	app.getObject('QV01','ArcaPRv');
+	
+	  $("#ClearAll").click(function () {
+      console.log('Cleared All Selctions');
+	      app.clearAll();
+	  
+    });
+ 
+	
+	//app.getObject('QVChart10','WrTk');
 	app.getObject('QVChart10','WrTk').then(function(reply){
 	var qTable = qlik.table(reply);
 	$('#ExportButton1').click( function ( ) {
@@ -57,16 +92,33 @@ app.getObject('QVChart11','jkpGX').then(function(reply){
 							});
 		
 });	
-//End logic for Table Export
-*/
+
+	app.getObject('QVChart09','SEZutz');
+	app.getObject('QVChart08','WXMc');
+	app.getObject('QVChart07','Sqf');
+	app.getObject('QVChart06','LmMJvc');
+	app.getObject('QVChart05','dRmyeqf');
+	app.getObject('QVChart04','WrTk');
+	app.getObject('QVChart03','vpREJB');
+	app.getObject('QVChart02','wDkVFV');
+	app.getObject('QVChart01','AgRhJR');
+	
+	
+	
+	
+  app.getObject("QV02", "EDgBgT");
   //callbacks -- inserted here --
+	
+
+	
+
   function KPIhc(reply, app) {
-    //console.log(reply);
+  console.log(reply);
     $("#QVKPI1")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
     $("#QVKPI2")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][1].qText;
-    $("#QVKPI3")[0].innerText =
+	$("#QVKPI3")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][2].qText;
   }
   //create cubes and lists -- inserted here --
@@ -84,8 +136,8 @@ app.getObject('QVChart11','jkpGX').then(function(reply){
           qDef: {
             qDef: "pick(ceil(log10(sum(LineSalesAmount))/3),\r\n\n          num(sum(LineSalesAmount),'#,##0.0'),\n\n          num(sum(LineSalesAmount)/1000,'#,##0.0 K'),\n\n          num(sum(LineSalesAmount)/1000000,'#,##0.0 M')\n\n     )   & ''",
           },
-          qLabel: "KPI1",
-          qLibraryId: null,
+          qLabel:"KPI1",
+		  qLibraryId: null,
           qSortBy: {
             qSortByState: 0,
             qSortByFrequency: 0,
@@ -116,21 +168,21 @@ app.getObject('QVChart11','jkpGX').then(function(reply){
             },
           },
         },
-        {
-          qLabel: "Margin",
-          qLibraryId: "AxGzSg",
-          qSortBy: {
-            qSortByState: 0,
-            qSortByFrequency: 0,
-            qSortByNumeric: 0,
-            qSortByAscii: 1,
-            qSortByLoadOrder: 0,
-            qSortByExpression: 0,
-            qExpression: {
-              qv: " ",
-            },
-          },
-        },
+		{
+			"qLabel": "Margin",
+			"qLibraryId": "AxGzSg",
+			"qSortBy": {
+				"qSortByState": 0,
+				"qSortByFrequency": 0,
+				"qSortByNumeric": 0,
+				"qSortByAscii": 1,
+				"qSortByLoadOrder": 0,
+				"qSortByExpression": 0,
+				"qExpression": {
+					"qv": " "
+				}
+			}
+		},
       ],
       qSuppressZero: false,
       qSuppressMissing: false,
@@ -140,7 +192,8 @@ app.getObject('QVChart11','jkpGX').then(function(reply){
     },
     KPIhc
   );
-  //Grab Current Selections
+	
+//Grab Current Selections
   app.getList("SelectionObject", function (reply) {
     $selections = $("#currSelections");
     $selections.html("");
