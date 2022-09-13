@@ -29,7 +29,7 @@ require(["js/qlik"], function (qlik) {
     $("#popup").hide();
   });
   //open apps -- inserted here --
-  
+
   //Logic for Reload Time
   app.getAppLayout().then((e) => {
     console.log("reload time received");
@@ -39,14 +39,34 @@ require(["js/qlik"], function (qlik) {
   window.qlik = qlik;
   window.app = app;
   //get objects -- inserted here --
+
+  /* Export Button logic for 2 tables. Pls change object IDs accordingly*/
+  /*
+	app.getObject('QVChart10','WrTk').then(function(reply){
+	var qTable = qlik.table(reply);
+	$('#ExportButton1').click( function ( ) {
+							qTable.exportData({download: true});
+							});
+		
+});	
+
+app.getObject('QVChart11','jkpGX').then(function(reply){
+	var qTable = qlik.table(reply);
+	$('#ExportButton2').click( function ( ) {
+							qTable.exportData({download: true});
+							});
+		
+});	
+//End logic for Table Export
+*/
   //callbacks -- inserted here --
   function KPIhc(reply, app) {
-  //console.log(reply);
+    //console.log(reply);
     $("#QVKPI1")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
     $("#QVKPI2")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][1].qText;
-	$("#QVKPI3")[0].innerText =
+    $("#QVKPI3")[0].innerText =
       reply.qHyperCube.qDataPages[0].qMatrix[0][2].qText;
   }
   //create cubes and lists -- inserted here --
@@ -64,8 +84,8 @@ require(["js/qlik"], function (qlik) {
           qDef: {
             qDef: "pick(ceil(log10(sum(LineSalesAmount))/3),\r\n\n          num(sum(LineSalesAmount),'#,##0.0'),\n\n          num(sum(LineSalesAmount)/1000,'#,##0.0 K'),\n\n          num(sum(LineSalesAmount)/1000000,'#,##0.0 M')\n\n     )   & ''",
           },
-          qLabel:"KPI1",
-		  qLibraryId: null,
+          qLabel: "KPI1",
+          qLibraryId: null,
           qSortBy: {
             qSortByState: 0,
             qSortByFrequency: 0,
@@ -96,21 +116,21 @@ require(["js/qlik"], function (qlik) {
             },
           },
         },
-		{
-			"qLabel": "Margin",
-			"qLibraryId": "AxGzSg",
-			"qSortBy": {
-				"qSortByState": 0,
-				"qSortByFrequency": 0,
-				"qSortByNumeric": 0,
-				"qSortByAscii": 1,
-				"qSortByLoadOrder": 0,
-				"qSortByExpression": 0,
-				"qExpression": {
-					"qv": " "
-				}
-			}
-		},
+        {
+          qLabel: "Margin",
+          qLibraryId: "AxGzSg",
+          qSortBy: {
+            qSortByState: 0,
+            qSortByFrequency: 0,
+            qSortByNumeric: 0,
+            qSortByAscii: 1,
+            qSortByLoadOrder: 0,
+            qSortByExpression: 0,
+            qExpression: {
+              qv: " ",
+            },
+          },
+        },
       ],
       qSuppressZero: false,
       qSuppressMissing: false,
@@ -120,7 +140,7 @@ require(["js/qlik"], function (qlik) {
     },
     KPIhc
   );
-//Grab Current Selections
+  //Grab Current Selections
   app.getList("SelectionObject", function (reply) {
     $selections = $("#currSelections");
     $selections.html("");
