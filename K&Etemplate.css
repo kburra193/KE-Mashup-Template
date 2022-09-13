@@ -494,11 +494,17 @@ top_navbar .menu .right_menu ul li .fas:active {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 /* Chart Cards */
-/* Chart Headers */
+/* Chart Headers and Footers */
 .qv-object:not(.qv-object-filterpane) .qv-object-header {
   background-color: #edf0f5;
   border-bottom: 1px solid #d5d5d5;
   padding: 14px 16px 0px;
+}
+.qv-object:not(.qv-object-filterpane) .qv-object-footnote {
+	font-size: 0.769231em;
+    color: rgb(136, 136, 136);
+    background-color: #edf0f5;
+    margin-top: -10px;
 }
 /*CSS for Filters Placeholders objects only*/
 .filterObject {
