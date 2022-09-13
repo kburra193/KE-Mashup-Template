@@ -501,10 +501,10 @@ top_navbar .menu .right_menu ul li .fas:active {
   padding: 14px 16px 0px;
 }
 .qv-object:not(.qv-object-filterpane) .qv-object-footnote {
-	font-size: 0.769231em;
-    color: rgb(136, 136, 136);
-    background-color: #edf0f5;
-    margin-top: -10px;
+  font-size: 0.769231em;
+  color: rgb(136, 136, 136);
+  background-color: #edf0f5;
+  margin-top: -10px;
 }
 
 /*CSS for Filters Placeholders objects only*/
@@ -553,10 +553,7 @@ top_navbar .menu .right_menu ul li .fas:active {
 .qv-object.qv-object-qlik-date-picker {
   display: flex !important;
 }
-.qvchart {
-  height: 500px;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
-}
+
 .lui-popover-container {
   position: fixed !important;
   z-index: 10000 !important;
