@@ -54,6 +54,7 @@
   --qvtitlewrapper-theme2: #e7eaf0;
   --qvtitlewrappertext-theme2: #655dc6;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -88,6 +89,14 @@ body {
   background: var(--filterpanelheader-theme1);
   margin-bottom: 10px;
 }
+
+
+.filterpaneScroll {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
 /* CSS Top Bar */
 .top_navbar {
   background: var(--topbar-theme1);
@@ -292,9 +301,7 @@ top_navbar .menu .right_menu ul li .fas:active {
   top: 0;
   width: 0;
   z-index: 1110;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+  }
 .bs-canvas-right {
   right: 0;
 }
